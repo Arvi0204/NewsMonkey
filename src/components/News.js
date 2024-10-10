@@ -43,29 +43,26 @@ export class News extends Component {
       "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
     }
   ]
-  constructor(){
+  constructor() {
     super(); // Super constructor must be called to avoid errors
-    console.log("Hello I am a constructor from news component");
     this.state = {
       articles: this.articles,
       loading: false
     }
-    
-}
+
+  }
   render() {
     return (
       <div className="container my-3">
         <h2>Welcome to NewsMonkey, today's headlines</h2>
         <div className="row">
-          <div className="col-md-4">
-            <NewsItem title="myTitle" description="myDes" imgUrl="https://static.files.bbci.co.uk/ws/simorgh-assets/public/sport/images/metadata/poster-1024x576.png" newsURL="todo"/>
-          </div>
-          <div className="col-md-4">
-            <NewsItem title="myTitle"description="myDes" />
-          </div>
-          <div className="col-md-4">
-            <NewsItem title="myTitle" description="myDes"/>
-          </div>
+          {this.state.articles.map((element) => {
+            return (
+              <div className="col-md-4" key = {element.url} >
+                <NewsItem title={element.title} description={element.description} imgUrl={element.urlToImage} newsURL={element.url} />
+              </div>
+            )
+          })}
         </div>
       </div>
     )
