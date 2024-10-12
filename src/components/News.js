@@ -30,36 +30,38 @@ export class News extends Component {
     document.title = `NewsMonkey - ${this.capitalizeFirst(props.category)}`;
   }
   async updateNews() {
-    this.props.setProgress(0);
+    this.props.setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=c22fbad0692842d1971194477d5bf4a0&page=${this.state.page}&pageSize=${this.props.pageSize}`
     this.setState({ loading: true })
     let data = await fetch(url);
+    this.props.setProgress(35);
     let parsedData = await data.json();
+    this.props.setProgress(60);
     this.setState({ articles: parsedData.articles, loading: false, totalResults: parsedData.totalResults })
-    this.props.setProgress(100)
+    this.props.setProgress(100);
   }
   async componentDidMount() {
     this.updateNews();
   }
 
-  handleNext = async () => {
-    await this.setState({
-      page: this.state.page + 1
-    })
-    this.updateNews();
-  }
-  handlePrev = async () => {
-    await this.setState({
-      page: this.state.page - 1
-    })
-    this.updateNews();
-  }
+  // handleNext = async () => {
+  //   await this.setState({
+  //     page: this.state.page + 1
+  //   })
+  //   this.updateNews();
+  // }
+  // handlePrev = async () => {
+  //   await this.setState({
+  //     page: this.state.page - 1
+  //   })
+  //   this.updateNews();
+  // }
   fetchMoreData = async () => {
     this.setState({
       page: this.state.page + 1,
     });
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=c22fbad0692842d1971194477d5bf4a0&page=${this.state.page}&pageSize=${this.props.pageSize}`
-    this.setState({loading:true});
+    this.setState({ loading: true });
     let data = await fetch(url);
     let parsedData = await data.json();
     this.setState({
@@ -80,9 +82,9 @@ export class News extends Component {
           <div className="container">
 
             <div className="row">
-              {this.state.articles && this.state.articles.map((element) => {
+              {this.state.articles && this.state.articles.map((element, index) => {
                 return (
-                  <div className="col-md-4" key={element.url} >
+                  <div className="col-md-4" key={index} >
                     <NewsItem title={element.title} desc={element.description} imgUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
                   </div>
                 )
