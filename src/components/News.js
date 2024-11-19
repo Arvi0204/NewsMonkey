@@ -35,20 +35,20 @@ const News = (props) => {
     updateNews();
     // eslint-disable-next-line  
   }, [])
-  
+
   // const handleNext = async () => {
-    //   setPage(page+1);
-    //   updateNews();
-    // }
-    // const handlePrev = async () => {
-      //   setPage(page-1);
-      //   updateNews();
-      // }
-      const fetchMoreData = async () => {
-        const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page + 1}&pageSize=${props.pageSize}`
-        setPage(page + 1);
-        setLoading(true);
-        let data = await fetch(url);
+  //   setPage(page+1);
+  //   updateNews();
+  // }
+  // const handlePrev = async () => {
+  //   setPage(page-1);
+  //   updateNews();
+  // }
+  const fetchMoreData = async () => {
+    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page + 1}&pageSize=${props.pageSize}`
+    setPage(page + 1);
+    setLoading(true);
+    let data = await fetch(url);
     let parsedData = await data.json();
     setArticles(articles.concat(parsedData.articles))
     setTotalResults(parsedData.totalResults)
@@ -57,7 +57,7 @@ const News = (props) => {
   return (
     <>
       <h2 className="text-center" style={{ margin: "35px", marginTop: "90px" }}>Welcome to NewsMonkey - Top {capitalizeFirst(props.category)} Headlines</h2>
-      {/* {loading && <Spinner />} */}
+      {loading && <Spinner />}
       {/* Adding infinite scroll logic */}
       <InfiniteScroll dataLength={articles.length} next={fetchMoreData} hasMore={articles.length !== totalResults} loader={loading && <Spinner />}>
         <div className="container">
