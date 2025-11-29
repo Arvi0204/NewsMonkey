@@ -5,7 +5,7 @@ const NewsItem = (props) => {
     return (
         <div className='my-3'>
             <div className="card">
-                <span className="position-absolute badge rounded-pill bg-danger" style={{ zIndex: 1, right: "5px", top: "5px" }}>
+                <span className="position-absolute badge rounded-pill" style={{ zIndex: 1, right: "5px", top: "5px" }}>
                     {source}
                     <span className="visually-hidden">unread messages</span>
                 </span>
@@ -13,7 +13,7 @@ const NewsItem = (props) => {
                 <div className="card-body">
                     <h5 className="card-title">{title} </h5>
                     <p className="card-text">{desc}</p>
-                    <p className="card-text"><small className="text-body-secondary">By {author ? author : "Unknown"} on {new Date(date).toUTCString()}</small></p>
+                    <p className="card-text"><small className="text-secondary">By {author ? author : "Unknown"} on {new Date(date).toUTCString()}</small></p>
                     <a href={newsUrl} target="_blank" rel="noreferrer" className="btn btn-dark btn-sm">Read More</a>
                 </div>
             </div>
