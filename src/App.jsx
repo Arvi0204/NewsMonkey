@@ -1,8 +1,8 @@
 import "./App.css";
 
 import React, { useState } from "react";
-import Navbar from "./components/Navbar";
-import News from "./components/News";
+import Navbar from "./components/Navbar.jsx";
+import News from "./components/News.jsx";
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,7 +11,7 @@ import {
 import LoadingBar from 'react-top-loading-bar'
 
 const App = () => {
-  const apiKey = process.env.REACT_APP_NEWS_API
+  const apiKey = import.meta.env.VITE_NEWS_API
   const pageSize = 15;
   const [progress, setProgress] = useState(0);
 
