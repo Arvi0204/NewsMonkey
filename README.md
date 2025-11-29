@@ -4,36 +4,43 @@ A simple news application built using React and Bootstrap that fetches and displ
 
 ## Features
 
+- **Modern UI**: A sleek, dark-themed interface with **Glassmorphism** effects.
 - **Multiple Categories**: Displays news from different categories like General, Business, Entertainment etc.
-- **Responsive UI**: Built with Bootstrap, the app provides a clean, responsive design that adapts to different screen sizes.
+- **Responsive UI**: Built with Bootstrap and custom CSS, ensuring a premium experience on all devices.
 - **Real-Time News**: Fetches the latest news using a development news API.
+- **Optimized Performance**: Replaced legacy loading GIFs with lightweight CSS-only spinners.
 
 ## Tech Stack
 
-- **Frontend**: React
-- **UI Framework**: Bootstrap
+- **Frontend**: React (Vite)
+- **Styling**: Bootstrap 5 + Custom CSS (Glassmorphism, Dark Mode)
+- **Fonts**: Poppins (Headings), Inter (Body)
 - **API**: Development news API (Paid when deployed)
 
 ## Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/Arvi0204/React02_newsmonkey.git
    ```
 
 2. Navigate to the project directory:
+
    ```bash
    cd React02_newsmonkey
    ```
 
 3. Install the dependencies:
+
    ```bash
    npm install
    ```
 
 4. Run the application locally:
+
    ```bash
-   npm start
+   npm run dev
    ```
 
    The app will be available at `http://localhost:3000` in your browser.
